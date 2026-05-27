@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Laudos & Contratos Imobiliários — Modelos Profissionais</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink: #141210;
+      --paper: #f4f1eb;
+      --gold: #a8865c;
+      --fog: #9a9189;
+      --white: #fefdfb;
+      --dark-card: #1e1a16;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { background: var(--paper); color: var(--ink); font-family: 'Outfit', sans-serif; font-weight: 300; overflow-x: hidden; }
+
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1.25rem 5rem;
+      background: rgba(244,241,235,0.92); backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(168,134,92,0.15);
+    }
+    .logo { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 400; letter-spacing: 0.04em; color: var(--ink); text-decoration: none; }
+    .logo em { font-style: italic; color: var(--gold); }
+    .nav-links { display: flex; gap: 2.5rem; align-items: center; }
+    .nav-links a { font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--fog); text-decoration: none; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--gold); }
+    .nav-links a.cta { color: var(--white); background: var(--ink); padding: 0.55rem 1.4rem; transition: background 0.2s; }
+    .nav-links a.cta:hover { background: var(--gold); }
+
+    .hero {
+      min-height: 100vh; display: flex; flex-direction: column; justify-content: flex-end;
+      padding: 0 5rem 5rem; position: relative; overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 80% 60% at 70% 40%, rgba(168,134,92,0.1) 0%, transparent 60%),
+                  radial-gradient(ellipse 50% 80% at 20% 80%, rgba(122,74,46,0.07) 0%, transparent 50%);
+    }
+    .hero-lines {
+      position: absolute; inset: 0;
+      background-image: repeating-linear-gradient(90deg, transparent, transparent 79px, rgba(168,134,92,0.055) 80px);
+    }
+    .hero-counter {
+      position: absolute; top: 50%; right: 5rem; transform: translateY(-50%);
+      font-family: 'Playfair Display', serif; font-size: clamp(10rem, 18vw, 20rem);
+      font-weight: 400; color: rgba(168,134,92,0.07); line-height: 1; user-select: none;
+    }
+    .hero-content { position: relative; z-index: 1; max-width: 700px; }
+    .hero-tag {
+      display: inline-flex; align-items: center; gap: 0.75rem;
+      font-size: 0.68rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--gold); margin-bottom: 2rem;
+    }
+    .hero-tag::before { content: ''; width: 32px; height: 1px; background: var(--gold); }
+    .hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(3rem, 6vw, 5.5rem); font-weight: 400; line-height: 1.05; letter-spacing: -0.02em; margin-bottom: 2rem; }
+    .hero h1 em { font-style: italic; color: var(--gold); }
+    .hero-sub { font-size: 1rem; line-height: 1.8; color: var(--fog); max-width: 500px; margin-bottom: 3rem; }
+    .hero-btns { display: flex; gap: 1.5rem; align-items: center; flex-wrap: wrap; }
+    .btn-dark { background: var(--ink); color: var(--paper); padding: 1rem 2.5rem; font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase; text-decoration: none; transition: background 0.25s, transform 0.2s; display: inline-block; }
+    .btn-dark:hover { background: var(--gold); transform: translateY(-2px); }
+    .btn-outline { border: 1px solid rgba(168,134,92,0.4); color: var(--gold); padding: 1rem 2rem; font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase; text-decoration: none; transition: all 0.25s; display: inline-block; }
+    .btn-outline:hover { background: var(--gold); color: var(--white); border-color: var(--gold); }
+    .hero-stats { position: absolute; bottom: 5rem; right: 5rem; display: flex; flex-direction: column; gap: 1.5rem; z-index: 1; }
+    .stat { text-align: right; }
+    .stat-num { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 400; color: var(--ink); line-height: 1; }
+    .stat-label { font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--fog); margin-top: 0.2rem; }
+
+    .section-wrap { padding: 7rem 5rem; }
+    .eyebrow { display: flex; align-items: center; gap: 0.75rem; font-size: 0.68rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.5rem; }
+    .eyebrow::before { content: ''; width: 32px; height: 1px; background: var(--gold); }
+    .section-title { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 3.5vw, 3.2rem); font-weight: 400; line-height: 1.15; margin-bottom: 1rem; }
+    .section-title em { font-style: italic; color: var(--gold); }
+
+    #combos { background: var(--dark-card); }
+    #combos .eyebrow { color: var(--gold); }
+    #combos .eyebrow::before { background: var(--gold); }
+    #combos .section-title { color: var(--paper); }
+    #combos .section-title em { color: var(--gold); }
+    .combos-intro { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: end; margin-bottom: 4rem; }
+    .combos-desc { font-size: 0.9rem; line-height: 1.8; color: rgba(244,241,235,0.45); max-width: 400px; align-self: end; }
+    .combos-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: rgba(168,134,92,0.2); }
+    .combo-card { background: var(--dark-card); padding: 2.5rem 2rem; display: flex; flex-direction: column; transition: background 0.3s; position: relative; overflow: hidden; }
+    .combo-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: var(--gold); transform: scaleX(0); transform-origin: left; transition: transform 0.3s; }
+    .combo-card:hover { background: #261f18; }
+    .combo-card:hover::before { transform: scaleX(1); }
+    .combo-icon { font-size: 1.5rem; margin-bottom: 1.5rem; }
+    .combo-tag { font-size: 0.62rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.75rem; }
+    .combo-title { font-family: 'Playfair Display', serif; font-size: 1.15rem; font-weight: 400; color: var(--paper); line-height: 1.3; margin-bottom: 1rem; flex-grow: 1; }
+    .combo-includes { font-size: 0.75rem; color: rgba(244,241,235,0.38); line-height: 1.6; margin-bottom: 1.5rem; }
+    .combo-price { font-family: 'Playfair Display', serif; font-size: 1.8rem; color: var(--paper); margin-bottom: 1.5rem; }
+    .btn-combo { display: flex; align-items: center; justify-content: space-between; padding: 0.75rem 1rem; border: 1px solid rgba(168,134,92,0.3); color: var(--gold); text-decoration: none; font-size: 0.68rem; letter-spacing: 0.15em; text-transform: uppercase; transition: all 0.25s; }
+    .btn-combo:hover { background: var(--gold); color: var(--ink); border-color: var(--gold); }
+
+    #individuais { background: var(--white); }
+    .tabs-header { display: flex; gap: 0; border-bottom: 1px solid rgba(168,134,92,0.2); margin-bottom: 3rem; overflow-x: auto; }
+    .tab-btn { padding: 1rem 2rem; font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--fog); background: none; border: none; border-bottom: 2px solid transparent; cursor: pointer; white-space: nowrap; transition: all 0.2s; font-family: 'Outfit', sans-serif; }
+    .tab-btn:hover { color: var(--gold); }
+    .tab-btn.active { color: var(--gold); border-bottom-color: var(--gold); }
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; }
+    .produtos-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(270px, 1fr)); gap: 1px; background: rgba(168,134,92,0.15); }
+    .prod-card { background: var(--white); padding: 2rem 1.8rem; display: flex; flex-direction: column; transition: background 0.25s; }
+    .prod-card:hover { background: var(--paper); }
+    .prod-num { font-family: 'Playfair Display', serif; font-size: 0.72rem; color: rgba(168,134,92,0.45); letter-spacing: 0.2em; margin-bottom: 1.25rem; }
+    .prod-title { font-family: 'Playfair Display', serif; font-size: 1.2rem; font-weight: 400; color: var(--ink); line-height: 1.3; margin-bottom: 0.75rem; flex-grow: 1; }
+    .prod-desc { font-size: 0.8rem; line-height: 1.7; color: var(--fog); margin-bottom: 1.75rem; }
+    .prod-price { font-family: 'Playfair Display', serif; font-size: 1.6rem; color: var(--ink); margin-bottom: 0.2rem; }
+    .prod-note { font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--fog); margin-bottom: 1.5rem; }
+    .btn-prod { display: flex; align-items: center; justify-content: space-between; padding: 0.75rem 1rem; border: 1px solid var(--ink); color: var(--ink); text-decoration: none; font-size: 0.68rem; letter-spacing: 0.15em; text-transform: uppercase; transition: all 0.25s; }
+    .btn-prod:hover { background: var(--ink); color: var(--paper); }
+
+    #como { background: var(--paper); border-top: 1px solid rgba(168,134,92,0.15); }
+    .steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; margin-top: 4rem; border: 1px solid rgba(168,134,92,0.2); }
+    .step { padding: 3rem 2rem; border-right: 1px solid rgba(168,134,92,0.2); }
+    .step:last-child { border-right: none; }
+    .step-num { font-family: 'Playfair Display', serif; font-size: 3rem; font-weight: 400; color: rgba(168,134,92,0.18); line-height: 1; margin-bottom: 1.5rem; }
+    .step h4 { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 400; margin-bottom: 0.75rem; color: var(--ink); }
+    .step p { font-size: 0.82rem; line-height: 1.7; color: var(--fog); }
+
+    footer { background: var(--ink); padding: 3rem 5rem; display: flex; align-items: center; justify-content: space-between; }
+    footer .logo { color: var(--paper); }
+    footer p { font-size: 0.72rem; color: rgba(244,241,235,0.35); letter-spacing: 0.05em; }
+
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+    .hero-tag  { animation: fadeUp 0.7s ease both 0.1s; }
+    .hero h1   { animation: fadeUp 0.7s ease both 0.25s; }
+    .hero-sub  { animation: fadeUp 0.7s ease both 0.4s; }
+    .hero-btns { animation: fadeUp 0.7s ease both 0.55s; }
+
+    @media (max-width: 1024px) {
+      nav { padding: 1.2rem 2rem; }
+      .hero { padding: 0 2rem 4rem; }
+      .hero-stats { right: 2rem; bottom: 4rem; }
+      .hero-counter { right: 2rem; font-size: 8rem; }
+      .section-wrap { padding: 5rem 2rem; }
+      .combos-intro { grid-template-columns: 1fr; gap: 1.5rem; }
+      .combos-grid { grid-template-columns: repeat(2, 1fr); }
+      .steps { grid-template-columns: repeat(2, 1fr); }
+      .step:nth-child(2) { border-right: none; }
+      .step:nth-child(3),
+      .step:nth-child(4) { border-top: 1px solid rgba(168,134,92,0.2); }
+      footer { padding: 2rem; flex-direction: column; gap: 1rem; text-align: center; }
+    }
+    @media (max-width: 640px) {
+      .nav-links { display: none; }
+      .hero h1 { font-size: 2.6rem; }
+      .hero-stats { display: none; }
+      .combos-grid { grid-template-columns: 1fr; }
+      .steps { grid-template-columns: 1fr; }
+      .step { border-right: none; border-bottom: 1px solid rgba(168,134,92,0.2); }
+      .step:last-child { border-bottom: none; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="logo">Laudos <em>&</em> Contratos Imobiliários</a>
+  <div class="nav-links">
+    <a href="#combos">Combos</a>
+    <a href="#individuais">Modelos</a>
+    <a href="#como">Como Funciona</a>
+    <a href="#combos" class="cta">Comprar Agora</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-lines"></div>
+  <div class="hero-counter">19</div>
+  <div class="hero-content">
+    <div class="hero-tag">Documentação Imobiliária Profissional</div>
+    <h1>Modelos prontos.<br><em>Precisão jurídica.</em><br>Entrega imediata.</h1>
+    <p class="hero-sub">Laudos periciais, de vistoria e contratos de locação — editáveis em Word e PDF, normatizados para o mercado imobiliário brasileiro.</p>
+    <div class="hero-btns">
+      <a href="#combos" class="btn-dark">Ver Combos</a>
+      <a href="#individuais" class="btn-outline">Modelos Individuais</a>
+    </div>
+  </div>
+  <div class="hero-stats">
+    <div class="stat"><div class="stat-num">19</div><div class="stat-label">Modelos disponíveis</div></div>
+    <div class="stat"><div class="stat-num">4</div><div class="stat-label">Categorias</div></div>
+    <div class="stat"><div class="stat-num">100%</div><div class="stat-label">Editável</div></div>
+  </div>
+</section>
+
+<section id="combos" class="section-wrap">
+  <div class="combos-intro">
+    <div>
+      <div class="eyebrow">Melhor custo-benefício</div>
+      <h2 class="section-title">Pacotes <em>completos</em><br>por categoria</h2>
+    </div>
+    <p class="combos-desc">Adquira o pacote completo de uma categoria e economize. Ideal para profissionais que atuam em múltiplas frentes do mercado imobiliário.</p>
+  </div>
+  <div class="combos-grid">
+    <div class="combo-card">
+      <div class="combo-icon">⚖️</div>
+      <div class="combo-tag">Combo</div>
+      <div class="combo-title">Laudos Judiciais Completo</div>
+      <div class="combo-includes">Inclui modelos A, B, C, D e E Judicial<br>5 modelos completos</div>
+      <div class="combo-price">R$ —</div>
+      <a href="[LINK_COMBO_JUDICIAL]" class="btn-combo" target="_blank">Adquirir Combo →</a>
+    </div>
+    <div class="combo-card">
+      <div class="combo-icon">📋</div>
+      <div class="combo-tag">Combo</div>
+      <div class="combo-title">Laudos Extrajudiciais Completo</div>
+      <div class="combo-includes">Inclui modelos A, B, C, D e E Extrajudicial<br>5 modelos completos</div>
+      <div class="combo-price">R$ —</div>
+      <a href="[LINK_COMBO_EXTRAJUDICIAL]" class="btn-combo" target="_blank">Adquirir Combo →</a>
+    </div>
+    <div class="combo-card">
+      <div class="combo-icon">🏠</div>
+      <div class="combo-tag">Combo</div>
+      <div class="combo-title">Laudos de Vistoria Entrada & Saída</div>
+      <div class="combo-includes">Inclui Vistoria de Entrada e de Saída<br>2 modelos completos</div>
+      <div class="combo-price">R$ —</div>
+      <a href="[LINK_COMBO_VISTORIA]" class="btn-combo" target="_blank">Adquirir Combo →</a>
+    </div>
+    <div class="combo-card">
+      <div class="combo-icon">📄</div>
+      <div class="combo-tag">Combo</div>
+      <div class="combo-title">Contratos de Locação Completo</div>
+      <div class="combo-includes">Inclui Caução, Fiador e Seguro Fiança<br>3 modelos completos</div>
+      <div class="combo-price">R$ —</div>
+      <a href="[LINK_COMBO_CONTRATOS]" class="btn-combo" target="_blank">Adquirir Combo →</a>
+    </div>
+  </div>
+</section>
+
+<section id="individuais" class="section-wrap">
+  <div class="eyebrow">Modelos Individuais</div>
+  <h2 class="section-title">Escolha <em>exatamente</em><br>o que você precisa</h2>
+
+  <div class="tabs-header" style="margin-top:2.5rem;">
+    <button class="tab-btn active" onclick="showTab('judicial',this)">Laudos Judiciais</button>
+    <button class="tab-btn" onclick="showTab('extrajudicial',this)">Laudos Extrajudiciais</button>
+    <button class="tab-btn" onclick="showTab('vistoria',this)">Laudos de Vistoria</button>
+    <button class="tab-btn" onclick="showTab('contratos',this)">Contratos</button>
+  </div>
+
+  <div id="tab-judicial" class="tab-panel active">
+    <div class="produtos-grid">
+      <div class="prod-card"><div class="prod-num">JUD — 01</div><div class="prod-title">Laudo Judicial A</div><p class="prod-desc">Modelo A para laudos periciais na esfera judicial. Estrutura técnica normatizada para processos judiciais imobiliários.</p><div class="prod-price">R$ —</div><div class="prod-note">Pix ou cartão · entrega imediata</div><a href="[LINK_JUDICIAL_A]" class="btn-prod" target="_blank">Baixar Agora →</a></div>
+      <div class="prod-card"><div class="prod-num">JUD — 02</div><div class="prod-title">Laudo Judicial B</div><p class="prod-desc">Modelo B para laudos periciais na esfera judicial. Estrutura técnica normatizada para processos judiciais imobiliários.</p><div class="prod-price">R$ —</div><div class="prod-note">Pix ou cartão · entrega imediata</div><a href="[LINK_JUDICIAL_B]" class="btn-prod" target="_blank">Baixar Agora →</a></div>
+      <div class="prod-card"><div class="prod-num">JUD — 03</div><div class="prod-title">Laudo Judicial C</div><p class="prod-desc">Modelo C para laudos periciais na esfera judicial. Estrutura técnica normatizada para processos judiciais imobiliários.</p><div class="prod-price">R$ —</div><div class="prod-note">Pix ou cartão · entrega imediata</div><a href="[LINK_JUDICIAL_C]" class="btn-prod" target="_blank">Baixar Agora →</a></div>
+      <div class="prod-card"><div class="prod-num">JUD — 04</div><div class="prod-title">Laudo Judicial D</div><p class="prod-desc">Modelo D para laudos periciais na esfera judicial. Estrutura técnica normatizada para processos judiciais imobiliários.</p><div class="prod-price">R$ —</div><div class="prod-note">Pix ou cartão · entrega imediata</div><a href="[LINK_JUDICIAL_D]" class="btn-prod" target="_blank">Baixar Agora →</a></div>
+      <div class="prod-card"><div class="prod-num">JUD — 05</div><div class="prod-title">Laudo Judicial E</div><p class="prod-desc">Modelo E para laudos periciais na esfera judicial. Estrutura técnica normatizada para processos judiciais imobiliários.</p><div class="prod-price">R$ —</div><div class="prod-note">Pix ou cartão · entrega imediata</div><a href="[LINK_JUDICIAL_E]" class="btn-prod" target="_blank">Baixar Agora →</a></div>
+    </div>
+  </div>
+
+  <div id="tab-extrajudicial" class="tab-panel">
+    <div class="produtos-grid">
+      <div class="prod-card"><div class="prod-num">EXT — 01</div><div class="prod-title">Laudo Extrajudicial A</div><p class="prod-desc">Modelo A para laudos periciais extrajudiciais. Ideal para avaliações e perícias fora do âmbito judicial.</p><div class="prod-price">R$ —</div><div class="prod-note">Pix ou cartão · entrega imediata</div><a href="[LINK_EXTRAJUDICIAL_A]" class="btn-prod" target="_blank">Baixar Agora →</a></div>
+      <div class="prod-card"><div class="prod-num">EXT — 02</div><div class="prod-title">Laudo Extrajudicial B</div><p class="prod-desc">Modelo B para laudos periciais extrajudiciais. Ideal para avaliações e perícias fora do âmbito judicial.</p><div class="prod-price">R$ —</div><div class="prod-note">Pix ou cartão · entrega imediata</div><a href="[LINK_EXTRAJUDICIAL_B]" class="btn-prod" target="_blank">Baixar Agora →</a></div>
+      <div class="prod-card"><div class="prod-num">EXT — 03</div><div class="prod-title">Laudo Extrajudicial C</div><p class="prod-desc">Modelo C para laudos periciais extrajudiciais. Ideal para avaliações e perícias fora do âmbito judicial.</p><div class="prod-price">R$ —</div><div class="prod-note">Pix ou cartão · entrega imediata</div><a href="[LINK_EXTRAJUDICIAL_C]" class="btn-prod" target="_blank">Baixar Agora →</a></div>
+      <div class="prod-card"><div class="prod-num">EXT — 04</div><div class="prod-title">Laudo Extrajudicial D</div><p class="prod-desc">Modelo D para laudos periciais extrajudiciais. Ideal para avaliações e perícias fora do âmbito judicial.</p><div class="prod-price">R$ —</div><div class="prod-note">Pix ou cartão · entrega imediata</div><a href="[LINK_EXTRAJUDICIAL_D]" class="btn-prod" target="_blank">Baixar Agora →</a></div>
+      <div class="prod-card"><div class="prod-num">EXT — 05</div><div class="prod-title">Laudo Extrajudicial E</div><p class="prod-desc">Modelo E para laudos periciais extrajudiciais. Ideal para avaliações e perícias fora do âmbito judicial.</p><div class="prod-price">R$ —</div><div class="prod-note">Pix ou cartão · entrega imediata</div><a href="[LINK_EXTRAJUDICIAL_E]" class="btn-prod" target="_blank">Baixar Agora →</a></div>
+    </div>
+  </div>
+
+  <div id="tab-vistoria" class="tab-panel">
+    <div class="produtos-grid">
+      <div class="prod-card"><div class="prod-num">VIS — 01</div><div class="prod-title">Laudo de Vistoria de Entrada</div><p class="prod-desc">Modelo completo para vistoria de entrada em imóveis locados. Registra o estado do imóvel no início da locação, protegendo locador e locatário.</p><div class="prod-price">R$ —</div><div class="prod-note">Pix ou cartão · entrega imediata</div><a href="[LINK_VISTORIA_ENTRADA]" class="btn-prod" target="_blank">Baixar Agora →</a></div>
+      <div class="prod-card"><div class="prod-num">VIS — 02</div><div class="prod-title">Laudo de Vistoria de Saída</div><p class="prod-desc">Modelo completo para vistoria de saída em imóveis locados. Documenta as condições do imóvel na devolução, base para acerto de contas e eventuais contestações.</p><div class="prod-price">R$ —</div><div class="prod-note">Pix ou cartão · entrega imediata</div><a href="[LINK_VISTORIA_SAIDA]" class="btn-prod" target="_blank">Baixar Agora →</a></div>
+    </div>
+  </div>
+
+  <div id="tab-contratos" class="tab-panel">
+    <div class="produtos-grid">
+      <div class="prod-card"><div class="prod-num">CON — 01</div><div class="prod-title">Contrato de Locação com Caução</div><p class="prod-desc">Modelo de contrato de locação com garantia por caução em dinheiro. Cláusulas completas, editável e adaptável a diferentes tipos de imóvel.</p><div class="prod-price">R$ —</div><div class="prod-note">Pix ou cartão · entrega imediata</div><a href="[LINK_CONTRATO_CAUCAO]" class="btn-prod" target="_blank">Baixar Agora →</a></div>
+      <div class="prod-card"><div class="prod-num">CON — 02</div><div class="prod-title">Contrato de Locação com Fiador</div><p class="prod-desc">Modelo de contrato de locação com garantia por fiador. Inclui termo de fiança, obrigações do fiador e cláusulas de proteção ao locador.</p><div class="prod-price">R$ —</div><div class="prod-note">Pix ou cartão · entrega imediata</div><a href="[LINK_CONTRATO_FIADOR]" class="btn-prod" target="_blank">Baixar Agora →</a></div>
+      <div class="prod-card"><div class="prod-num">CON — 03</div><div class="prod-title">Contrato com Seguro Fiança</div><p class="prod-desc">Modelo de contrato de locação com garantia por seguro fiança. Estruturado para integração com apólices de seguradoras, conforme Lei do Inquilinato.</p><div class="prod-price">R$ —</div><div class="prod-note">Pix ou cartão · entrega imediata</div><a href="[LINK_CONTRATO_FIANCA]" class="btn-prod" target="_blank">Baixar Agora →</a></div>
+    </div>
+  </div>
+</section>
+
+<section id="como" class="section-wrap">
+  <div class="eyebrow">Simples e rápido</div>
+  <h2 class="section-title">Como <em>funciona</em></h2>
+  <div class="steps">
+    <div class="step"><div class="step-num">01</div><h4>Escolha o modelo</h4><p>Selecione o laudo ou contrato que você precisa — individual ou em combo — e clique em "Baixar Agora".</p></div>
+    <div class="step"><div class="step-num">02</div><h4>Efetue o pagamento</h4><p>Pagamento seguro via Hotmart. Aceitamos Pix e cartão de crédito. Processamento imediato.</p></div>
+    <div class="step"><div class="step-num">03</div><h4>Receba o arquivo</h4><p>Após a confirmação, o arquivo em Word e PDF é liberado imediatamente para download.</p></div>
+    <div class="step"><div class="step-num">04</div><h4>Preencha e use</h4><p>Abra no Word, preencha os campos editáveis e o documento está pronto para uso profissional.</p></div>
+  </div>
+</section>
+
+<footer>
+  <a href="#" class="logo">Laudos <em>&</em> Contratos Imobiliários</a>
+  <p>© 2026 Laudos & Contratos Imobiliários · Processamento seguro via Hotmart</p>
+</footer>
+
+<script>
+  function showTab(id, btn) {
+    document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById('tab-' + id).classList.add('active');
+    btn.classList.add('active');
+  }
+</script>
+</body>
+</html>
