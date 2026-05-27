@@ -150,10 +150,22 @@
       .nav-links { display: none; }
       .hero h1 { font-size: 2.6rem; }
       .hero-stats { display: none; }
-      .combos-grid { grid-template-columns: 1fr; }
+      .combos-grid { grid-template-columns: repeat(2, 1fr); }
       .steps { grid-template-columns: 1fr; }
       .step { border-right: none; border-bottom: 1px solid rgba(168,134,92,0.2); }
       .step:last-child { border-bottom: none; }
+      .tabs-header {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        overflow: visible;
+      }
+      .tab-btn {
+        padding: 0.85rem 0.5rem;
+        font-size: 0.62rem;
+        text-align: center;
+        border-bottom: 2px solid rgba(168,134,92,0.15);
+      }
+      .tab-btn.active { border-bottom-color: var(--gold); }
     }
   </style>
 </head>
