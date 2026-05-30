@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contato — Laudos & Contratos Imobiliários</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ink: #1a1a1a;
+    --paper: #f7f4ef;
+    --gold: #b8922a;
+    --gold-light: #d4aa4a;
+    --muted: #7a7570;
+    --border: #ddd8d0;
+    --error: #8b2e2e;
+    --success: #2e5c3e;
+  }
+
+  html, body {
+    min-height: 100vh;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Jost', sans-serif;
+    font-weight: 300;
+  }
+
+  body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem 1.5rem;
+    background-image:
+      radial-gradient(ellipse at 20% 20%, rgba(184,146,42,0.06) 0%, transparent 60%),
+      radial-gradient(ellipse at 80% 80%, rgba(184,146,42,0.04) 0%, transparent 60%);
+  }
+
+  .card {
+    width: 100%;
+    max-width: 520px;
+    background: #fff;
+    border: 1px solid var(--border);
+    padding: 3rem 2.5rem;
+    position: relative;
+    box-shadow: 0 2px 40px rgba(0,0,0,0.06), 0 1px 4px rgba(0,0,0,0.04);
+  }
+
+  .card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--gold), var(--gold-light), var(--gold));
+  }
+
+  .brand {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.85rem;
+    font-weight: 400;
+    letter-spacing: 0.12em;
+    color: var(--muted);
+    text-transform: uppercase;
+    margin-bottom: 2rem;
+    display: block;
+  }
+
+  .label {
+    font-family: 'Jost', sans-serif;
+    font-size: 0.65rem;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.5rem;
+  }
+
+  h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2rem;
+    font-weight: 300;
+    line-height: 1.2;
+    color: var(--ink);
+    margin-bottom: 0.5rem;
+  }
+
+  .subtitle {
+    font-size: 0.82rem;
+    color: var(--muted);
+    line-height: 1.7;
+    margin-bottom: 2.25rem;
+  }
+
+  .divider {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 0 0 2rem;
+  }
+
+  .field {
+    margin-bottom: 1.25rem;
+  }
+
+  .field-label {
+    font-size: 0.68rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 0.45rem;
+    display: block;
+  }
+
+  input[type="text"],
+  input[type="email"],
+  textarea {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: 1px solid var(--border);
+    background: var(--paper);
+    font-family: 'Jost', sans-serif;
+    font-size: 0.88rem;
+    font-weight: 300;
+    color: var(--ink);
+    outline: none;
+    transition: border-color 0.2s, background 0.2s;
+    resize: none;
+    appearance: none;
+    border-radius: 0;
+  }
+
+  input[type="text"]:focus,
+  input[type="email"]:focus,
+  textarea:focus {
+    border-color: var(--gold);
+    background: #fff;
+  }
+
+  textarea {
+    height: 130px;
+    line-height: 1.6;
+  }
+
+  button[type="submit"] {
+    width: 100%;
+    padding: 0.9rem 1.5rem;
+    background: var(--ink);
+    color: #fff;
+    border: 1px solid var(--ink);
+    font-family: 'Jost', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background 0.2s, border-color 0.2s;
+    margin-top: 0.5rem;
+  }
+
+  button[type="submit"]:hover {
+    background: var(--gold);
+    border-color: var(--gold);
+  }
+
+  button[type="submit"]:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  .success-msg {
+    display: none;
+    margin-top: 1.5rem;
+    padding: 1.25rem 1.5rem;
+    background: #f0f7f3;
+    border: 1px solid #c5ddd0;
+    font-size: 0.82rem;
+    color: var(--success);
+    line-height: 1.6;
+    animation: fadeIn 0.4s ease;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(6px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .back-link {
+    display: inline-block;
+    margin-top: 2rem;
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .back-link:hover {
+    color: var(--gold);
+  }
+
+  .footer {
+    margin-top: 2rem;
+    font-size: 0.72rem;
+    color: var(--muted);
+    text-align: center;
+    line-height: 1.7;
+  }
+</style>
+</head>
+<body>
+
+<div class="card">
+  <span class="brand">Laudos & Contratos Imobiliários</span>
+  <p class="label">Suporte</p>
+  <h1>Entre em contato</h1>
+  <p class="subtitle">Preencha o formulário abaixo. Respondemos em até 1 dia útil.</p>
+
+  <hr class="divider">
+
+  <form id="form" action="https://formspree.io/f/mlgvkewp" method="POST">
+    <div class="field">
+      <label class="field-label" for="nome">Nome</label>
+      <input type="text" id="nome" name="nome" placeholder="Seu nome completo" required>
+    </div>
+    <div class="field">
+      <label class="field-label" for="assunto">Assunto</label>
+      <input type="text" id="assunto" name="assunto" placeholder="Ex: Dúvida sobre download" required>
+    </div>
+    <div class="field">
+      <label class="field-label" for="mensagem">Mensagem</label>
+      <textarea id="mensagem" name="mensagem" placeholder="Descreva sua dúvida ou problema…" required></textarea>
+    </div>
+    <button type="submit" id="btn">Enviar mensagem</button>
+  </form>
+
+  <div class="success-msg" id="success">
+    ✓ Mensagem enviada com sucesso. Retornaremos em breve.
+  </div>
+
+  <a class="back-link" href="/">← Voltar ao site</a>
+</div>
+
+<p class="footer">
+  Este formulário é exclusivo para suporte pós-compra e dúvidas sobre os modelos.
+</p>
+
+<script>
+  const form = document.getElementById('form');
+  const btn = document.getElementById('btn');
+  const success = document.getElementById('success');
+
+  form.addEventListener('submit', async function(e) {
+    e.preventDefault();
+    btn.disabled = true;
+    btn.textContent = 'Enviando…';
+
+    const data = new FormData(form);
+
+    try {
+      const res = await fetch(form.action, {
+        method: 'POST',
+        body: data,
+        headers: { 'Accept': 'application/json' }
+      });
+
+      if (res.ok) {
+        form.style.display = 'none';
+        success.style.display = 'block';
+      } else {
+        btn.disabled = false;
+        btn.textContent = 'Enviar mensagem';
+        alert('Ocorreu um erro. Tente novamente.');
+      }
+    } catch {
+      btn.disabled = false;
+      btn.textContent = 'Enviar mensagem';
+      alert('Ocorreu um erro. Verifique sua conexão.');
+    }
+  });
+</script>
+
+</body>
+</html>
