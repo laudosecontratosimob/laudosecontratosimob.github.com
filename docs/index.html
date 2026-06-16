@@ -10,6 +10,15 @@
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;1,400;1,600&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet" />
 
   <style>
+
+    /* Logo SVG no nav */
+    .nav-logo-svg {
+      color: rgba(255,255,255,0.25);
+      transition: color .3s;
+    }
+    .nav.scrolled .nav-logo-svg {
+      color: var(--forest);
+    }
     /* ── TOKENS ── */
     :root {
       --forest:      #003219;
@@ -71,18 +80,17 @@
       align-items: center;
       justify-content: space-between;
     }
-    .nav-logo {
+    .nav-logo { color: rgba(255,255,255,0.9);
       border: 1.5px solid rgba(255,255,255,.3);
       padding: .45rem 1rem;
       border-radius: var(--radius);
       transition: border-color .3s;
     }
-    .nav.scrolled .nav-logo { border-color: var(--forest); }
+    .nav.scrolled .nav-logo { color: var(--forest); border-color: var(--forest); }
     .nav-logo-name {
       font-family: 'Playfair Display', serif;
       font-size: .95rem;
       font-weight: 700;
-      color: var(--white);
       transition: color .3s;
     }
     .nav-logo-name span { color: var(--amber); }
@@ -900,7 +908,12 @@
   <nav class="nav" id="nav">
     <div class="container">
       <div class="nav-inner">
-        <a href="#" class="nav-logo">
+        <a href="#" class="nav-logo" style="display:flex;align-items:center;gap:.6rem;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="28" height="28" class="nav-logo-svg" style="flex-shrink:0">
+  <rect x="4" y="4" width="92" height="92" rx="14" ry="14" fill="none" stroke="currentColor" stroke-width="4.5"/>
+  <text x="16" y="70" font-family="Palatino Linotype,Palatino,Book Antiqua,serif" font-size="62" font-weight="400" fill="currentColor">L</text>
+  <text x="33" y="74" font-family="Palatino Linotype,Palatino,Book Antiqua,serif" font-size="54" font-weight="400" fill="currentColor">C</text>
+  <line x1="26" y1="16" x2="74" y2="86" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+</svg>
           <div class="nav-logo-name">Laudos <span>&amp;</span> Contratos</div>
           <div class="nav-logo-sub">Imobiliários</div>
         </a>
@@ -1019,7 +1032,12 @@
         </div>
         <div class="trust-item">
           <div class="trust-icon">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="28" height="28" style="flex-shrink:0;opacity:.8">
+  <rect x="4" y="4" width="92" height="92" rx="14" ry="14" fill="none" stroke="currentColor" stroke-width="4"/>
+  <text x="16" y="70" font-family="Palatino Linotype,Palatino,Book Antiqua,serif" font-size="62" font-weight="400" fill="currentColor">L</text>
+  <text x="33" y="74" font-family="Palatino Linotype,Palatino,Book Antiqua,serif" font-size="54" font-weight="400" fill="currentColor">C</text>
+  <line x1="26" y1="16" x2="74" y2="86" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+</svg>
           </div>
           <div>
             <div class="trust-label">Modelos Profissionais</div>
@@ -1473,7 +1491,12 @@
         <div class="step-card fade-up">
           <div class="step-num">01</div>
           <div class="step-icon">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="28" height="28" style="flex-shrink:0;opacity:.8">
+  <rect x="4" y="4" width="92" height="92" rx="14" ry="14" fill="none" stroke="currentColor" stroke-width="4"/>
+  <text x="16" y="70" font-family="Palatino Linotype,Palatino,Book Antiqua,serif" font-size="62" font-weight="400" fill="currentColor">L</text>
+  <text x="33" y="74" font-family="Palatino Linotype,Palatino,Book Antiqua,serif" font-size="54" font-weight="400" fill="currentColor">C</text>
+  <line x1="26" y1="16" x2="74" y2="86" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+</svg>
           </div>
           <div class="step-title">Escolha o modelo</div>
           <p class="step-desc">Selecione o laudo, vistoria ou contrato que você precisa — avulso ou em combo.</p>
@@ -1560,7 +1583,12 @@
       <div class="footer-top">
         <div>
           <div class="footer-brand-name">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="28" height="28" style="flex-shrink:0;opacity:.8">
+  <rect x="4" y="4" width="92" height="92" rx="14" ry="14" fill="none" stroke="currentColor" stroke-width="4"/>
+  <text x="16" y="70" font-family="Palatino Linotype,Palatino,Book Antiqua,serif" font-size="62" font-weight="400" fill="currentColor">L</text>
+  <text x="33" y="74" font-family="Palatino Linotype,Palatino,Book Antiqua,serif" font-size="54" font-weight="400" fill="currentColor">C</text>
+  <line x1="26" y1="16" x2="74" y2="86" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+</svg>
             Laudos <span>&amp;</span> Contratos Imobiliários
           </div>
           <p class="footer-brand-desc">Modelos profissionais de laudos, vistorias e contratos imobiliários. Normatizados e prontos para uso.</p>
