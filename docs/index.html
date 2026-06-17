@@ -79,6 +79,7 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
+      position: relative;
     }
     .nav-logo { color: rgba(255,255,255,0.9);
       border: 1.5px solid rgba(255,255,255,.3);
@@ -129,6 +130,29 @@
       transition: background .2s, opacity .2s;
     }
     .btn-nav:hover { background: var(--amber-light); }
+
+    /* ── HAMBURGUER (mobile) ── */
+    .nav-toggle {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      gap: 5px;
+      width: 2.2rem;
+      height: 2.2rem;
+      padding: .25rem;
+    }
+    .nav-toggle span {
+      display: block;
+      height: 2px;
+      width: 100%;
+      background: rgba(255,255,255,.9);
+      border-radius: 2px;
+      transition: all .3s;
+    }
+    .nav.scrolled .nav-toggle span { background: var(--forest); }
+    .nav-toggle.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav-toggle.open span:nth-child(2) { opacity: 0; }
+    .nav-toggle.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
     /* ══════════════════════════════════════
        HERO
@@ -888,7 +912,28 @@
     @media (max-width: 768px) {
       .hero-inner { grid-template-columns: 1fr; gap: 2.5rem; }
       .hero-card { display: none; }
-      .nav-links { display: none; }
+      .nav-toggle { display: flex; }
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0;
+        position: absolute;
+        top: 100%;
+        left: 0; right: 0;
+        background: var(--forest-dark);
+        padding: 1rem 2rem 1.5rem;
+        box-shadow: 0 8px 24px rgba(0,0,0,.25);
+      }
+      .nav-links.open { display: flex; }
+      .nav-links a {
+        width: 100%;
+        padding: .75rem 0;
+        border-bottom: 1px solid rgba(255,255,255,.1);
+        color: rgba(255,255,255,.9);
+      }
+      .nav-links a:last-child { border-bottom: none; }
+      .nav-links .btn-nav { margin-top: .5rem; text-align: center; }
       .combos-grid, .modelos-grid { grid-template-columns: 1fr; }
       .qualidade-inner { grid-template-columns: 1fr; }
       .steps-grid { grid-template-columns: 1fr 1fr; }
@@ -917,7 +962,12 @@
           <div class="nav-logo-name">Laudos <span>&amp;</span> Contratos Imobiliários</div>
        
         </a>
-        <div class="nav-links">
+        <button class="nav-toggle" id="navToggle" aria-label="Abrir menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+        <div class="nav-links" id="navLinks">
           <a href="#combos">Combos</a>
           <a href="#modelos">Modelos</a>
           <a href="#como-funciona">Como Funciona</a>
@@ -1728,6 +1778,20 @@
     window.addEventListener('scroll', () => {
       nav.classList.toggle('scrolled', window.scrollY > 60);
     }, { passive: true });
+
+    // ── MENU MOBILE (hamburguer) ──
+    const navToggle = document.getElementById('navToggle');
+    const navLinks = document.getElementById('navLinks');
+    navToggle.addEventListener('click', () => {
+      navToggle.classList.toggle('open');
+      navLinks.classList.toggle('open');
+    });
+    navLinks.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => {
+        navToggle.classList.remove('open');
+        navLinks.classList.remove('open');
+      });
+    });
 
     // ── TABS ──
     document.querySelectorAll('.tab-btn').forEach(btn => {
