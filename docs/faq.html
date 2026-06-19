@@ -1,0 +1,849 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FAQ - Dúvidas Frequentes | Laudos &amp; Contratos Imobiliários</title>
+  <meta name="description" content="Tire suas dúvidas sobre os modelos jurídicos, pagamento, entrega, edição e garantia." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;1,400;1,600&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ── TOKENS ── */
+    :root {
+      --forest:      #003219;
+      --forest-dark: #001c0c;
+      --forest-light:#154f2f;
+      --amber:       #cc9c42;
+      --amber-light: #e6bd77;
+      --parchment:   #f8f5ef;
+      --parchment-dk:#ebe7e0;
+      --ink:         #180f09;
+      --ink-light:   #4e4640;
+      --white:       #ffffff;
+      --border:      rgba(0,0,0,.08);
+      --radius:      .5rem;
+    }
+
+    /* ── RESET ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--parchment);
+      color: var(--ink);
+      -webkit-font-smoothing: antialiased;
+    }
+    img, svg, video { display: block; max-width: 100%; }
+    a { color: inherit; text-decoration: none; }
+    ul { list-style: none; }
+    button { cursor: pointer; border: none; background: none; font: inherit; }
+    h1, h2, h3, h4, h5, h6 { font-family: 'Playfair Display', serif; }
+
+    .container {
+      width: 100%;
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    /* ══════════════════════════════════════
+       NAV
+    ══════════════════════════════════════ */
+    .nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      transition: background .3s, box-shadow .3s, padding .3s;
+      padding: 1.25rem 0;
+      background: rgba(248,245,239,.95);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 1px 0 var(--border);
+    }
+    .nav.scrolled { padding: .75rem 0; }
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: relative;
+    }
+    .nav-logo {
+      display: flex; align-items: center; gap: .6rem;
+      color: var(--forest);
+      border: 1.5px solid var(--forest);
+      padding: .45rem 1rem;
+      border-radius: var(--radius);
+    }
+    .nav-logo-svg { color: var(--forest); }
+    .nav-logo-name {
+      font-family: 'Playfair Display', serif;
+      font-size: .95rem;
+      font-weight: 700;
+      color: var(--forest);
+    }
+    .nav-logo-name span { color: var(--amber); }
+
+    .nav-links { display: flex; align-items: center; gap: 2rem; }
+    .nav-links a {
+      font-size: .875rem;
+      font-weight: 500;
+      color: var(--ink-light);
+      transition: color .2s;
+    }
+    .nav-links a:hover { color: var(--forest); }
+    .nav-links a.active { color: var(--forest); font-weight: 700; }
+
+    .btn-nav {
+      background: var(--amber);
+      color: var(--white);
+      font-size: .875rem;
+      font-weight: 600;
+      padding: .55rem 1.25rem;
+      border-radius: var(--radius);
+      transition: background .2s;
+    }
+    .btn-nav:hover { background: var(--amber-light); }
+
+    /* HAMBURGUER */
+    .nav-toggle {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      gap: 5px;
+      width: 2.2rem;
+      height: 2.2rem;
+      padding: .25rem;
+    }
+    .nav-toggle span {
+      display: block;
+      height: 2px;
+      width: 100%;
+      background: var(--forest);
+      border-radius: 2px;
+      transition: all .3s;
+    }
+    .nav-toggle.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav-toggle.open span:nth-child(2) { opacity: 0; }
+    .nav-toggle.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    @media (max-width: 768px) {
+      .nav-toggle { display: flex; }
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0;
+        position: absolute;
+        top: 100%;
+        left: 0; right: 0;
+        background: var(--forest-dark);
+        padding: 1rem 2rem 1.5rem;
+        box-shadow: 0 8px 24px rgba(0,0,0,.25);
+      }
+      .nav-links.open { display: flex; }
+      .nav-links a {
+        width: 100%;
+        padding: .75rem 0;
+        border-bottom: 1px solid rgba(255,255,255,.1);
+        color: rgba(255,255,255,.9);
+      }
+      .nav-links a:last-child { border-bottom: none; }
+      .nav-links a.active { color: var(--amber-light); }
+      .nav-links .btn-nav { margin-top: .5rem; text-align: center; }
+    }
+
+    /* ══════════════════════════════════════
+       PAGE HERO
+    ══════════════════════════════════════ */
+    .page-hero {
+      background: var(--forest-dark);
+      padding: 9.5rem 0 4.5rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .page-hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 50% 0%, rgba(204,156,66,.12), transparent 60%);
+    }
+    .page-hero-inner { position: relative; }
+    .page-hero-title {
+      font-size: clamp(2rem, 4vw, 2.75rem);
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: .9rem;
+    }
+    .page-hero-desc {
+      font-size: 1rem;
+      color: rgba(255,255,255,.65);
+      max-width: 480px;
+      margin: 0 auto 2rem;
+    }
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: .4rem;
+      font-size: .85rem;
+      font-weight: 500;
+      color: var(--amber-light);
+      transition: color .2s;
+    }
+    .back-link:hover { color: var(--amber); }
+
+    /* SEARCH */
+    .faq-search-wrap { margin: 2.5rem auto 0; max-width: 480px; position: relative; }
+    .faq-search {
+      width: 100%;
+      padding: .85rem 1.25rem .85rem 2.75rem;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.18);
+      background: rgba(255,255,255,.06);
+      color: var(--white);
+      font-size: .9rem;
+      font-family: inherit;
+    }
+    .faq-search::placeholder { color: rgba(255,255,255,.45); }
+    .faq-search:focus { outline: none; border-color: var(--amber); background: rgba(255,255,255,.1); }
+    .faq-search-icon {
+      position: absolute;
+      left: 1rem; top: 50%;
+      transform: translateY(-50%);
+      color: rgba(255,255,255,.45);
+    }
+
+    /* ══════════════════════════════════════
+       FAQ BODY
+    ══════════════════════════════════════ */
+    .faq-section { padding: 5rem 0 6rem; }
+    .faq-layout {
+      display: grid;
+      grid-template-columns: 230px 1fr;
+      gap: 3rem;
+      align-items: start;
+    }
+
+    /* category nav (sticky sidebar) */
+    .faq-nav {
+      position: sticky;
+      top: 7rem;
+      display: flex;
+      flex-direction: column;
+      gap: .35rem;
+    }
+    .faq-nav-link {
+      font-size: .85rem;
+      font-weight: 500;
+      color: var(--ink-light);
+      padding: .55rem .9rem;
+      border-radius: var(--radius);
+      border-left: 2px solid transparent;
+      transition: background .2s, color .2s, border-color .2s;
+    }
+    .faq-nav-link:hover { background: var(--parchment-dk); color: var(--ink); }
+    .faq-nav-link.active {
+      color: var(--forest);
+      font-weight: 700;
+      background: rgba(0,50,25,.06);
+      border-left-color: var(--amber);
+    }
+
+    .faq-category { margin-bottom: 3.25rem; }
+    .faq-category-title {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 1.25rem;
+      padding-bottom: .9rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .faq-item {
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: var(--white);
+      margin-bottom: .75rem;
+      overflow: hidden;
+      transition: border-color .2s;
+    }
+    .faq-item.open { border-color: rgba(204,156,66,.4); }
+    .faq-q {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 1.1rem 1.4rem;
+      text-align: left;
+      font-size: .95rem;
+      font-weight: 600;
+      color: var(--ink);
+    }
+    .faq-q-icon {
+      flex-shrink: 0;
+      width: 22px; height: 22px;
+      border-radius: 50%;
+      background: var(--parchment-dk);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--forest);
+      transition: transform .25s, background .2s, color .2s;
+    }
+    .faq-item.open .faq-q-icon {
+      transform: rotate(45deg);
+      background: var(--amber);
+      color: var(--white);
+    }
+    .faq-a {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height .3s ease;
+    }
+    .faq-a-inner {
+      padding: 0 1.4rem 1.25rem;
+      font-size: .9rem;
+      line-height: 1.7;
+      color: var(--ink-light);
+    }
+    .faq-a-inner a { color: var(--forest); font-weight: 600; text-decoration: underline; }
+
+    .faq-empty {
+      display: none;
+      text-align: center;
+      padding: 2.5rem 1rem;
+      color: var(--ink-light);
+      font-size: .9rem;
+    }
+    .faq-empty a { color: var(--forest); font-weight: 600; text-decoration: underline; }
+
+    @media (max-width: 900px) {
+      .faq-layout { grid-template-columns: 1fr; gap: 2rem; }
+      .faq-nav {
+        position: static;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: .5rem;
+      }
+      .faq-nav-link { border-left: none; border-bottom: 2px solid transparent; }
+      .faq-nav-link.active { border-left-color: transparent; border-bottom-color: var(--amber); }
+    }
+
+    /* ══════════════════════════════════════
+       CTA
+    ══════════════════════════════════════ */
+    .cta-section { background: var(--parchment-dk); text-align: center; padding: 6rem 0; }
+    .cta-section h2 {
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      color: var(--ink);
+      margin-bottom: .75rem;
+    }
+    .cta-section p {
+      font-size: .95rem;
+      color: var(--ink-light);
+      max-width: 440px;
+      margin: 0 auto 2rem;
+      line-height: 1.6;
+    }
+    .btn-cta-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      background: var(--forest);
+      color: var(--white);
+      font-weight: 600;
+      font-size: .95rem;
+      padding: .8rem 2rem;
+      border-radius: var(--radius);
+      transition: background .2s;
+    }
+    .btn-cta-primary:hover { background: var(--forest-light); }
+
+    /* ══════════════════════════════════════
+       FOOTER
+    ══════════════════════════════════════ */
+    .footer { background: var(--forest-dark); color: rgba(255,255,255,.7); padding: 4rem 0 2rem; }
+    .footer-top {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 3rem;
+      padding-bottom: 2.5rem;
+      border-bottom: 1px solid rgba(255,255,255,.08);
+    }
+    .footer-brand-name {
+      display: flex; align-items: center; gap: .6rem;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: .9rem;
+    }
+    .footer-brand-name span { color: var(--amber); }
+    .footer-brand-desc { font-size: .85rem; line-height: 1.6; max-width: 300px; }
+    .footer-col-title { font-size: .75rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: rgba(255,255,255,.4); margin-bottom: 1rem; }
+    .footer-links { display: flex; flex-direction: column; gap: .6rem; }
+    .footer-links a { font-size: .875rem; color: rgba(255,255,255,.6); transition: color .15s; }
+    .footer-links a:hover { color: var(--amber-light); }
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: .75rem;
+      padding-top: 2rem;
+      font-size: .8rem;
+      color: rgba(255,255,255,.4);
+    }
+
+    @media (max-width: 768px) {
+      .footer-top { grid-template-columns: 1fr; gap: 2.5rem; }
+    }
+    @media (max-width: 480px) {
+      .container { padding: 0 1.25rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ══ NAV ══ -->
+  <nav class="nav" id="nav">
+    <div class="container">
+      <div class="nav-inner">
+        <a href="index.html" class="nav-logo">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="28" height="28" class="nav-logo-svg" style="flex-shrink:0">
+            <rect x="4" y="4" width="92" height="92" rx="14" ry="14" fill="none" stroke="currentColor" stroke-width="4.5"/>
+            <text x="16" y="70" font-family="Palatino Linotype,Palatino,Book Antiqua,serif" font-size="62" font-weight="400" fill="currentColor">L</text>
+            <text x="33" y="74" font-family="Palatino Linotype,Palatino,Book Antiqua,serif" font-size="54" font-weight="400" fill="currentColor">C</text>
+            <line x1="26" y1="16" x2="74" y2="86" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+          </svg>
+          <div class="nav-logo-name">Laudos <span>&amp;</span> Contratos Imobiliários</div>
+        </a>
+        <button class="nav-toggle" id="navToggle" aria-label="Abrir menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+        <div class="nav-links" id="navLinks">
+          <a href="index.html#combos">Combos</a>
+          <a href="index.html#modelos">Modelos</a>
+          <a href="index.html#como-funciona">Como Funciona</a>
+          <a href="faq.html" class="active">FAQ</a>
+          <a href="index.html#combos" class="btn-nav">Comprar Agora</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ══ PAGE HERO ══ -->
+  <section class="page-hero">
+    <div class="container page-hero-inner">
+      <h1 class="page-hero-title">Dúvidas Frequentes</h1>
+      <p class="page-hero-desc">Tudo o que você precisa saber antes de comprar.</p>
+      <a href="index.html" class="back-link">← Voltar para a página inicial</a>
+
+      <div class="faq-search-wrap">
+        <svg class="faq-search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <input type="text" class="faq-search" id="faqSearch" placeholder="Buscar uma dúvida..." />
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ FAQ BODY ══ -->
+  <section class="faq-section">
+    <div class="container faq-layout">
+
+      <!-- sidebar -->
+      <nav class="faq-nav" id="faqNav">
+        <a href="#compra-pagamento" class="faq-nav-link active">Compra e Pagamento</a>
+        <a href="#entrega-acesso" class="faq-nav-link">Entrega e Acesso</a>
+        <a href="#sobre-modelos" class="faq-nav-link">Sobre os Modelos</a>
+        <a href="#licenca" class="faq-nav-link">Licença de Uso e Direitos Autorais</a>
+        <a href="#garantia" class="faq-nav-link">Garantia e Reembolso</a>
+        <a href="#suporte" class="faq-nav-link">Suporte</a>
+      </nav>
+
+      <!-- categories -->
+      <div id="faqContent">
+
+        <div class="faq-category" id="compra-pagamento">
+          <h2 class="faq-category-title">Compra e Pagamento</h2>
+
+          <div class="faq-item">
+            <button class="faq-q"><span>Como funciona a compra?</span><span class="faq-q-icon">+</span></button>
+            <div class="faq-a"><div class="faq-a-inner">Após selecionar o produto desejado e concluir o pagamento, o acesso será liberado conforme as instruções fornecidas pela plataforma. Você receberá as orientações necessárias para acessar os materiais adquiridos.</div></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q"><span>Quais formas de pagamento são aceitas?</span><span class="faq-q-icon">+</span></button>
+            <div class="faq-a"><div class="faq-a-inner">As formas de pagamento disponíveis são exibidas no checkout no momento da compra e podem incluir Pix, cartão de crédito e outros meios disponibilizados pela plataforma de pagamento.</div></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q"><span>O pagamento é seguro?</span><span class="faq-q-icon">+</span></button>
+            <div class="faq-a"><div class="faq-a-inner">Sim. Todas as transações são processadas por plataformas especializadas em pagamentos eletrônicos, utilizando tecnologias de segurança adequadas para proteção dos dados da transação.</div></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q"><span>Preciso informar CPF na compra?</span><span class="faq-q-icon">+</span></button>
+            <div class="faq-a"><div class="faq-a-inner">Alguns dados poderão ser solicitados para processamento do pagamento, cumprimento de obrigações legais e identificação do comprador.</div></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q"><span>Posso comprar como pessoa física ou jurídica?</span><span class="faq-q-icon">+</span></button>
+            <div class="faq-a"><div class="faq-a-inner">Sim. Os produtos podem ser adquiridos tanto por pessoas físicas quanto por pessoas jurídicas.</div></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q"><span>Posso parcelar a compra?</span><span class="faq-q-icon">+</span></button>
+            <div class="faq-a"><div class="faq-a-inner">Sim. O parcelamento está disponível para compras no cartão de crédito. As condições, quantidade de parcelas e eventuais encargos serão exibidos diretamente no checkout.</div></div>
+          </div>
+        </div>
+
+        <div class="faq-category" id="entrega-acesso">
+          <h2 class="faq-category-title">Entrega e Acesso</h2>
+
+          <div class="faq-item">
+            <button class="faq-q"><span>Como recebo os modelos após a compra?</span><span class="faq-q-icon">+</span></button>
+            <div class="faq-a"><div class="faq-a-inner">Após a confirmação do pagamento, o acesso ao produto adquirido é disponibilizado digitalmente por meio da área de membros e/ou conforme as instruções enviadas ao e-mail cadastrado.</div></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q"><span>Demora quanto tempo para receber?</span><span class="faq-q-icon">+</span></button>
+            <div class="faq-a"><div class="faq-a-inner">A liberação costuma ocorrer quase imediatamente após a confirmação do pagamento. Em situações específicas de análise de segurança, a aprovação poderá levar algumas horas.</div></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q"><span>Posso baixar os modelos mais de uma vez?</span><span class="faq-q-icon">+</span></button>
+            <div class="faq-a"><div class="faq-a-inner">Sim. Você poderá acessar e baixar seus materiais novamente pela área de membros sempre que necessário. Para sua segurança, recomendamos manter uma cópia dos arquivos em seu computador ou armazenamento pessoal.</div></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q"><span>E se eu não receber o e-mail?</span><span class="faq-q-icon">+</span></button>
+            <div class="faq-a"><div class="faq-a-inner">Verifique sua caixa de entrada, spam, lixo eletrônico e promoções. Caso não localize a mensagem, entre em contato informando o e-mail utilizado na compra.</div></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q"><span>Preciso instalar algum programa para utilizar os arquivos?</span><span class="faq-q-icon">+</span></button>
+            <div class="faq-a"><div class="faq-a-inner">Os modelos são disponibilizados em formatos compatíveis com programas amplamente utilizados no mercado, como Microsoft Word e Microsoft Excel.</div></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q"><span>Os arquivos funcionam no Microsoft Word e Excel?</span><span class="faq-q-icon">+</span></button>
+            <div class="faq-a"><div class="faq-a-inner">Sim. Os materiais são desenvolvidos para utilização nesses formatos, observadas as versões compatíveis dos respectivos programas.</div></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q"><span>Posso acessar os materiais pelo celular?</span><span class="faq-q-icon">+</span></button>
+            <div class="faq-a"><div class="faq-a-inner">O acesso à área de membros pode ser realizado por dispositivos móveis compatíveis. Entretanto, para edição completa dos arquivos, recomenda-se a utilização de computador.</div></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q"><span>Por quanto tempo os materiais permanecem disponíveis na área de membros?</span><span class="faq-q-icon">+</span></button>
+            <div class="faq-a"><div class="faq-a-inner">Os materiais permanecem disponíveis enquanto mantidos pela plataforma. Recomenda-se que o comprador realize o download dos arquivos e mantenha cópias de segurança.</div></div>
+          </div>
+        </div>
+
+        <div class="faq-category" id="sobre-modelos">
+          <h2 class="faq-category-title">Sobre os Modelos</h2>
+
+          <div class="faq-item">
+            <button class="faq-q"><span>Os arquivos são editáveis?</span><span class="faq-q-icon">+</span></button>
+            <div class="faq-a"><div class="faq-a-inner">Sim. Os modelos são fornecidos em formatos editáveis para que possam ser adaptados às necessidades específicas de cada trabalho.</div></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q"><span>Posso personalizar os modelos?</span><span class="faq-q-icon">+</span></button>
+            <div class="faq-a"><div class="faq-a-inner">Sim. Os documentos podem ser personalizados, adaptados e complementados conforme as necessidades do usuário.</div></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q"><span>Os modelos estão atualizados com a legislação vigente?</span><span class="faq-q-icon">+</span></button>
+            <div class="faq-a"><div class="faq-a-inner">Sim. Os modelos disponibilizados na plataforma são atuais e foram elaborados com base na legislação, normas técnicas e práticas profissionais aplicáveis à época de sua disponibilização. Como a legislação e os entendimentos técnicos podem sofrer alterações ao longo do tempo, recomenda-se que o usuário revise e adapte o conteúdo às exigências específicas de cada caso.</div></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q"><span>Os modelos possuem marca d'água?</span><span class="faq-q-icon">+</span></button>
+            <div class="faq-a"><div class="faq-a-inner">Não. Os modelos são fornecidos em formato profissional e editável, sem marca d'água de uso. Eventualmente, poderão ser utilizados mecanismos de identificação de licença e proteção da propriedade intelectual.</div></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q"><span>Posso utilizar os modelos para meus clientes?</span><span class="faq-q-icon">+</span></button>
+            <div class="faq-a"><div class="faq-a-inner">Sim. Os modelos podem ser utilizados e reutilizados em sua atividade profissional para elaboração de documentos destinados aos seus clientes.</div></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q"><span>Os modelos substituem assessoria jurídica ou pericial?</span><span class="faq-q-icon">+</span></button>
+            <div class="faq-a"><div class="faq-a-inner">Não. Os materiais fornecem estrutura técnica de apoio e devem ser adaptados às características específicas de cada situação. A responsabilidade profissional permanece integralmente com o usuário.</div></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q"><span>Para quais profissionais os modelos foram desenvolvidos?</span><span class="faq-q-icon">+</span></button>
+            <div class="faq-a"><div class="faq-a-inner">Os materiais foram desenvolvidos para profissionais que atuam ou possuem interesse nas áreas imobiliária, pericial, avaliativa, contratual e documental.</div></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q"><span>Os modelos seguem normas técnicas da ABNT?</span><span class="faq-q-icon">+</span></button>
+            <div class="faq-a"><div class="faq-a-inner">Os modelos foram desenvolvidos com base nas normas técnicas, legislação e práticas profissionais aplicáveis a cada tipo de documento. Nos materiais de avaliação e perícia imobiliária, são utilizadas como referência as normas técnicas pertinentes, incluindo a série ABNT NBR 14.653, quando aplicável.</div></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q"><span>Os modelos podem ser adaptados para diferentes tipos de imóveis?</span><span class="faq-q-icon">+</span></button>
+            <div class="faq-a"><div class="faq-a-inner">Sim. Os documentos foram elaborados para permitir adaptações conforme as características do imóvel, da finalidade do trabalho e das necessidades do usuário.</div></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q"><span>Os modelos incluem exemplos de preenchimento?</span><span class="faq-q-icon">+</span></button>
+            <div class="faq-a"><div class="faq-a-inner">Sim. Todos os laudos e pareceres são fornecidos com comentários explicativos e exemplos de preenchimento, facilitando sua utilização prática e adaptação aos casos concretos. Já os contratos, laudos de vistoria e demais documentos imobiliários acompanham material explicativo com orientações de uso, personalização e preenchimento.</div></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q"><span>Preciso ter experiência para utilizar os modelos?</span><span class="faq-q-icon">+</span></button>
+            <div class="faq-a"><div class="faq-a-inner">Os modelos foram desenvolvidos para uso profissional. Os comentários, exemplos de preenchimento e materiais explicativos facilitam a utilização dos documentos, mas não substituem o conhecimento técnico necessário para sua correta aplicação.</div></div>
+          </div>
+        </div>
+
+        <div class="faq-category" id="licenca">
+          <h2 class="faq-category-title">Licença de Uso e Direitos Autorais</h2>
+
+          <div class="faq-item">
+            <button class="faq-q"><span>Posso compartilhar os arquivos com colegas ou membros da minha equipe?</span><span class="faq-q-icon">+</span></button>
+            <div class="faq-a"><div class="faq-a-inner">Os modelos podem ser utilizados na atividade profissional do adquirente. Entretanto, a licença concedida é individual, pessoal e intransferível, não autorizando o compartilhamento ou redistribuição dos arquivos originais a terceiros.</div></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q"><span>Posso revender os modelos?</span><span class="faq-q-icon">+</span></button>
+            <div class="faq-a"><div class="faq-a-inner">Não. Os modelos são protegidos por direitos autorais e destinam-se exclusivamente à utilização profissional pelo adquirente.</div></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q"><span>Posso redistribuir os arquivos gratuitamente?</span><span class="faq-q-icon">+</span></button>
+            <div class="faq-a"><div class="faq-a-inner">Não. É proibido compartilhar, distribuir, disponibilizar ou transferir os arquivos originais a terceiros, mesmo sem finalidade comercial.</div></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q"><span>Posso publicar os modelos em grupos, redes sociais ou serviços de armazenamento?</span><span class="faq-q-icon">+</span></button>
+            <div class="faq-a"><div class="faq-a-inner">Não. A publicação ou disponibilização dos arquivos originais em qualquer ambiente público ou privado acessível a terceiros é proibida.</div></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q"><span>Posso utilizar os modelos dentro da minha empresa?</span><span class="faq-q-icon">+</span></button>
+            <div class="faq-a"><div class="faq-a-inner">Os modelos podem ser utilizados na atividade profissional do adquirente. Entretanto, a licença concedida é individual, pessoal e intransferível, não autorizando o compartilhamento ou redistribuição dos arquivos originais a terceiros.</div></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q"><span>O que acontece em caso de compartilhamento não autorizado?</span><span class="faq-q-icon">+</span></button>
+            <div class="faq-a"><div class="faq-a-inner">A violação da licença de uso poderá resultar na revogação do acesso aos materiais, cancelamento da licença concedida e adoção das medidas administrativas e legais cabíveis para proteção dos direitos autorais e da propriedade intelectual.</div></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q"><span>Os modelos possuem proteção de direitos autorais?</span><span class="faq-q-icon">+</span></button>
+            <div class="faq-a"><div class="faq-a-inner">Sim. Todo o conteúdo disponibilizado é protegido pela legislação brasileira de direitos autorais e propriedade intelectual.</div></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q"><span>A licença é individual ou pode ser utilizada por várias pessoas?</span><span class="faq-q-icon">+</span></button>
+            <div class="faq-a"><div class="faq-a-inner">A licença é individual, pessoal e intransferível, salvo disposição expressa em contrário.</div></div>
+          </div>
+        </div>
+
+        <div class="faq-category" id="garantia">
+          <h2 class="faq-category-title">Garantia e Reembolso</h2>
+
+          <div class="faq-item">
+            <button class="faq-q"><span>Como funciona a garantia?</span><span class="faq-q-icon">+</span></button>
+            <div class="faq-a"><div class="faq-a-inner">Os produtos digitais estão sujeitos ao prazo legal de arrependimento previsto na legislação aplicável.</div></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q"><span>Como solicito um reembolso?</span><span class="faq-q-icon">+</span></button>
+            <div class="faq-a"><div class="faq-a-inner">A solicitação deverá ser realizada pelos canais de atendimento disponibilizados pela plataforma dentro do prazo legal aplicável.</div></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q"><span>Em quais situações o reembolso poderá ser analisado individualmente?</span><span class="faq-q-icon">+</span></button>
+            <div class="faq-a"><div class="faq-a-inner">Situações envolvendo fraude, má-fé, compartilhamento indevido dos materiais, violação dos Termos de Uso ou utilização abusiva da política de reembolso poderão ser analisadas individualmente.</div></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q"><span>O acesso permanece ativo após um reembolso aprovado?</span><span class="faq-q-icon">+</span></button>
+            <div class="faq-a"><div class="faq-a-inner">Não. Em caso de reembolso aprovado, a licença concedida é revogada e o acesso aos materiais poderá ser encerrado.</div></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q"><span>O que acontece com minha licença após o reembolso?</span><span class="faq-q-icon">+</span></button>
+            <div class="faq-a"><div class="faq-a-inner">A licença de uso é automaticamente revogada, não sendo mais permitida a utilização dos materiais obtidos por meio da compra reembolsada.</div></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q"><span>Posso solicitar reembolso após baixar os arquivos?</span><span class="faq-q-icon">+</span></button>
+            <div class="faq-a"><div class="faq-a-inner">As solicitações serão analisadas conforme a legislação aplicável e os Termos de Uso da plataforma.</div></div>
+          </div>
+        </div>
+
+        <div class="faq-category" id="suporte">
+          <h2 class="faq-category-title">Suporte</h2>
+
+          <div class="faq-item">
+            <button class="faq-q"><span>Como funciona o suporte?</span><span class="faq-q-icon">+</span></button>
+            <div class="faq-a"><div class="faq-a-inner">O suporte está disponível para auxiliar em questões relacionadas à compra, acesso aos materiais e dúvidas sobre os produtos adquiridos. Questões técnicas relacionadas à infraestrutura e ao funcionamento interno de plataformas de terceiros poderão depender do suporte dos respectivos fornecedores.</div></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q"><span>Quais assuntos o suporte atende?</span><span class="faq-q-icon">+</span></button>
+            <div class="faq-a"><div class="faq-a-inner">O suporte atende dúvidas relacionadas aos produtos adquiridos, acesso aos materiais, downloads e informações da compra. Não estão incluídos serviços de consultoria jurídica, pericial, revisão de documentos ou orientação sobre casos específicos.</div></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q"><span>O suporte presta consultoria jurídica?</span><span class="faq-q-icon">+</span></button>
+            <div class="faq-a"><div class="faq-a-inner">Não. O suporte não presta consultoria jurídica, pareceres legais ou orientação profissional especializada.</div></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q"><span>O suporte auxilia no preenchimento dos documentos?</span><span class="faq-q-icon">+</span></button>
+            <div class="faq-a"><div class="faq-a-inner">Os materiais já incluem comentários, exemplos de preenchimento e orientações de utilização, elaborados para auxiliar o usuário na adaptação dos documentos às suas necessidades. O suporte não realiza preenchimento de documentos, elaboração de trabalhos, análise de casos concretos ou orientação técnica individualizada.</div></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q"><span>Como entro em contato com o suporte?</span><span class="faq-q-icon">+</span></button>
+            <div class="faq-a"><div class="faq-a-inner">Os canais de atendimento disponíveis estarão informados na plataforma e nas comunicações oficiais relacionadas à compra. Você também pode acessar nossa <a href="contato.html">página de contato</a>.</div></div>
+          </div>
+        </div>
+
+        <div class="faq-empty" id="faqEmpty">
+          Nenhuma dúvida encontrada com esse termo.<br>
+          Tente outra palavra-chave ou <a href="contato.html">entre em contato</a>.
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ CTA ══ -->
+  <section class="cta-section">
+    <div class="container">
+      <h2>Ainda tem dúvidas?</h2>
+      <p>Nosso time responde em até 24 horas. Estamos aqui para ajudar.</p>
+      <a href="contato.html" class="btn-cta-primary">Falar Conosco →</a>
+    </div>
+  </section>
+
+  <!-- ══ FOOTER ══ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-top">
+        <div>
+          <div class="footer-brand-name">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="28" height="28" style="flex-shrink:0;opacity:.8">
+              <rect x="4" y="4" width="92" height="92" rx="14" ry="14" fill="none" stroke="currentColor" stroke-width="4"/>
+              <text x="16" y="70" font-family="Palatino Linotype,Palatino,Book Antiqua,serif" font-size="62" font-weight="400" fill="currentColor">L</text>
+              <text x="33" y="74" font-family="Palatino Linotype,Palatino,Book Antiqua,serif" font-size="54" font-weight="400" fill="currentColor">C</text>
+              <line x1="26" y1="16" x2="74" y2="86" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+            </svg>
+            Laudos <span>&amp;</span> Contratos Imobiliários
+          </div>
+          <p class="footer-brand-desc">Modelos profissionais de laudos, vistorias e contratos imobiliários. Normatizados e prontos para uso.</p>
+        </div>
+        <div>
+          <div class="footer-col-title">Navegação</div>
+          <nav class="footer-links">
+            <a href="index.html#combos">Combos</a>
+            <a href="index.html#modelos">Modelos Avulsos</a>
+            <a href="index.html#como-funciona">Como Funciona</a>
+            <a href="faq.html">Perguntas Frequentes</a>
+          </nav>
+        </div>
+        <div>
+          <div class="footer-col-title">Legal</div>
+          <nav class="footer-links">
+            <a href="privacidade.html">Política de Privacidade</a>
+            <a href="termos.html">Termos de Serviço</a>
+            <a href="#" style="color:rgba(255,255,255,.4)">Processamento seguro via Cakto</a>
+          </nav>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 · Laudos &amp; Contratos Imobiliários. Todos os direitos reservados.</span>
+        <span>🔒 Pagamento 100% seguro</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // ── NAV SCROLL ──
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 60);
+    }, { passive: true });
+
+    // ── MENU MOBILE (hamburguer) ──
+    const navToggle = document.getElementById('navToggle');
+    const navLinks = document.getElementById('navLinks');
+    navToggle.addEventListener('click', () => {
+      navToggle.classList.toggle('open');
+      navLinks.classList.toggle('open');
+    });
+    navLinks.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => {
+        navToggle.classList.remove('open');
+        navLinks.classList.remove('open');
+      });
+    });
+
+    // ── ACCORDION ──
+    document.querySelectorAll('.faq-item').forEach(item => {
+      const q = item.querySelector('.faq-q');
+      const a = item.querySelector('.faq-a');
+      const inner = item.querySelector('.faq-a-inner');
+      q.addEventListener('click', () => {
+        const isOpen = item.classList.contains('open');
+        if (isOpen) {
+          item.classList.remove('open');
+          a.style.maxHeight = '0px';
+        } else {
+          item.classList.add('open');
+          a.style.maxHeight = inner.scrollHeight + 'px';
+        }
+      });
+    });
+
+    // ── SIDEBAR ACTIVE STATE ON SCROLL ──
+    const categories = document.querySelectorAll('.faq-category');
+    const navLinksSidebar = document.querySelectorAll('.faq-nav-link');
+    const sidebarObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          navLinksSidebar.forEach(l => l.classList.remove('active'));
+          const link = document.querySelector('.faq-nav-link[href="#' + entry.target.id + '"]');
+          if (link) link.classList.add('active');
+        }
+      });
+    }, { rootMargin: '-20% 0px -70% 0px' });
+    categories.forEach(cat => sidebarObserver.observe(cat));
+
+    // ── SEARCH ──
+    const searchInput = document.getElementById('faqSearch');
+    const faqEmpty = document.getElementById('faqEmpty');
+    searchInput.addEventListener('input', () => {
+      const term = searchInput.value.trim().toLowerCase();
+      let anyVisible = false;
+
+      categories.forEach(cat => {
+        let catHasMatch = false;
+        cat.querySelectorAll('.faq-item').forEach(item => {
+          const text = item.textContent.toLowerCase();
+          const match = text.includes(term);
+          item.style.display = match ? '' : 'none';
+          if (match) catHasMatch = true;
+        });
+        cat.style.display = catHasMatch ? '' : 'none';
+        if (catHasMatch) anyVisible = true;
+      });
+
+      faqEmpty.style.display = anyVisible || term === '' ? 'none' : 'block';
+      if (term === '') {
+        categories.forEach(cat => cat.style.display = '');
+      }
+    });
+  </script>
+
+</body>
+</html>
