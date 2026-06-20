@@ -666,9 +666,8 @@
         });
 
         if (res.ok) {
-          form.style.display = 'none';
-          success.style.display = 'block';
-        } else {
+  window.location.href = './obrigado.html';
+} else {
           btn.disabled = false;
           btn.innerHTML = 'Enviar Mensagem';
           alert('Ocorreu um erro. Tente novamente.');
