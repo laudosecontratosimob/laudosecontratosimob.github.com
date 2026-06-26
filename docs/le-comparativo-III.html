@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Laudo de Avaliação Imobiliária — Método Comparativo Direto (Grau III) | Laudos &amp; Contratos Imobiliários</title>
+  <meta name="description" content="Modelo profissional para Laudos de Avaliação Mercadológica pelo Método Comparativo Direto de Dados de Mercado, conforme ABNT NBR 14653-1 e 14653-2, Grau III." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;1,400;1,600&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ── TOKENS ── */
+    :root {
+      --forest:      #003219;
+      --forest-dark: #001c0c;
+      --forest-light:#154f2f;
+      --amber:       #cc9c42;
+      --amber-light: #e6bd77;
+      --parchment:   #f8f5ef;
+      --parchment-dk:#ebe7e0;
+      --ink:         #180f09;
+      --ink-light:   #4e4640;
+      --white:       #ffffff;
+      --border:      rgba(0,0,0,.08);
+      --radius:      .5rem;
+    }
+
+    /* ── RESET ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--parchment);
+      color: var(--ink);
+      -webkit-font-smoothing: antialiased;
+    }
+    img, svg, video { display: block; max-width: 100%; }
+    a { color: inherit; text-decoration: none; }
+    ul { list-style: none; }
+    button { cursor: pointer; border: none; background: none; font: inherit; }
+    h1, h2, h3, h4, h5, h6 { font-family: 'Playfair Display', serif; }
+
+    .container {
+      width: 100%;
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    /* ══════════════════════════════════════
+       NAV
+    ══════════════════════════════════════ */
+    .nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      transition: background .3s, box-shadow .3s, padding .3s;
+      padding: 1.25rem 0;
+      background: rgba(248,245,239,.95);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 1px 0 var(--border);
+    }
+    .nav.scrolled { padding: .75rem 0; }
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: relative;
+    }
+    .nav-logo {
+      display: flex; align-items: center; gap: .6rem;
+      color: var(--forest);
+      border: 1.5px solid var(--forest);
+      padding: .45rem 1rem;
+      border-radius: var(--radius);
+    }
+    .nav-logo-svg { color: var(--forest); }
+    .nav-logo-name {
+      font-family: 'Playfair Display', serif;
+      font-size: .95rem;
+      font-weight: 700;
+      color: var(--forest);
+    }
+    .nav-logo-name span { color: var(--amber); }
+
+    .nav-links { display: flex; align-items: center; gap: 2rem; }
+    .nav-links a {
+      font-size: .875rem;
+      font-weight: 500;
+      color: var(--ink-light);
+      transition: color .2s;
+    }
+    .nav-links a:hover { color: var(--forest); }
+    .nav-links a.active { color: var(--forest); font-weight: 700; }
+
+    .btn-nav {
+      background: var(--amber);
+      color: var(--white);
+      font-size: .875rem;
+      font-weight: 600;
+      padding: .55rem 1.25rem;
+      border-radius: var(--radius);
+      transition: background .2s;
+    }
+    .btn-nav:hover { background: var(--amber-light); }
+
+    /* HAMBURGUER */
+    .nav-toggle {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      gap: 5px;
+      width: 2.2rem;
+      height: 2.2rem;
+      padding: .25rem;
+    }
+    .nav-toggle span {
+      display: block;
+      height: 2px;
+      width: 100%;
+      background: var(--forest);
+      border-radius: 2px;
+      transition: all .3s;
+    }
+    .nav-toggle.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav-toggle.open span:nth-child(2) { opacity: 0; }
+    .nav-toggle.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    @media (max-width: 768px) {
+      .nav-toggle { display: flex; }
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0;
+        position: absolute;
+        top: 100%;
+        left: 0; right: 0;
+        background: var(--forest-dark);
+        padding: 1rem 2rem 1.5rem;
+        box-shadow: 0 8px 24px rgba(0,0,0,.25);
+      }
+      .nav-links.open { display: flex; }
+      .nav-links a {
+        width: 100%;
+        padding: .75rem 0;
+        border-bottom: 1px solid rgba(255,255,255,.1);
+        color: rgba(255,255,255,.9);
+      }
+      .nav-links a:last-child { border-bottom: none; }
+      .nav-links a.active { color: var(--amber-light); }
+      .nav-links .btn-nav { margin-top: .5rem; text-align: center; }
+    }
+
+    /* ══════════════════════════════════════
+       PAGE HERO
+    ══════════════════════════════════════ */
+    .page-hero {
+      background: var(--forest-dark);
+      padding: 9.5rem 0 4.5rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      isolation: isolate;
+    }
+    .page-hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image: url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1600&q=80');
+      background-size: cover;
+      background-position: center 40%;
+      opacity: .26;
+      z-index: 0;
+    }
+    .page-hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 50% 0%, rgba(204,156,66,.12), transparent 60%),
+                  linear-gradient(180deg, rgba(0,28,12,.45) 0%, var(--forest-dark) 88%);
+      z-index: 1;
+    }
+    .page-hero-inner { position: relative; z-index: 2; max-width: 760px; margin: 0 auto; }
+    .page-hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      font-size: .72rem;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--amber-light);
+      margin-bottom: 1.25rem;
+    }
+    .page-hero-badge::before,
+    .page-hero-badge::after {
+      content: "";
+      width: 22px; height: 1px;
+      background: var(--amber-light);
+    }
+    .page-hero-title {
+      font-size: clamp(1.7rem, 3.4vw, 2.5rem);
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1.25;
+      margin-bottom: 1.1rem;
+    }
+    .page-hero-desc {
+      font-size: .98rem;
+      color: rgba(255,255,255,.7);
+      max-width: 600px;
+      margin: 0 auto 2rem;
+      line-height: 1.75;
+    }
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: .4rem;
+      font-size: .85rem;
+      font-weight: 500;
+      color: var(--amber-light);
+      transition: color .2s;
+    }
+    .back-link:hover { color: var(--amber); }
+
+    /* ══════════════════════════════════════
+       INTRO SECTION
+    ══════════════════════════════════════ */
+    .intro-section { padding: 4.5rem 0 1rem; }
+    .intro-container { max-width: 760px; margin: 0 auto; }
+    .intro-container p {
+      font-size: .98rem;
+      line-height: 1.85;
+      color: var(--ink-light);
+      margin-bottom: 1.25rem;
+    }
+    .intro-container p strong { color: var(--ink); }
+
+    /* ══════════════════════════════════════
+       PRODUCT SECTIONS (cards)
+    ══════════════════════════════════════ */
+    .product-section { padding: 3.25rem 0; }
+    .product-container { max-width: 1000px; margin: 0 auto; }
+    .product-section-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: .6rem;
+      text-align: center;
+    }
+    .product-section-eyebrow {
+      display: block;
+      text-align: center;
+      font-size: .72rem;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--amber);
+      margin-bottom: .6rem;
+    }
+    .product-section-sub {
+      text-align: center;
+      font-size: .92rem;
+      color: var(--ink-light);
+      max-width: 560px;
+      margin: 0 auto 2.5rem;
+      line-height: 1.7;
+    }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+    }
+    .card-grid.cols-2 { grid-template-columns: repeat(2, 1fr); }
+
+    .info-card {
+      display: flex;
+      align-items: flex-start;
+      gap: .85rem;
+      padding: 1.1rem 1.25rem;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      transition: border-color .2s, box-shadow .2s, transform .2s;
+    }
+    .info-card:hover {
+      border-color: rgba(204,156,66,.4);
+      box-shadow: 0 8px 24px rgba(0,50,25,.06);
+      transform: translateY(-2px);
+    }
+    .info-card-icon {
+      flex-shrink: 0;
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      background: var(--forest);
+      color: var(--amber-light);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .info-card-text { font-size: .9rem; color: var(--ink); font-weight: 600; line-height: 1.45; padding-top: .35rem; }
+
+    .check-card {
+      display: flex;
+      align-items: flex-start;
+      gap: .75rem;
+      padding: 1.1rem 1.25rem;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+    }
+    .check-card-icon {
+      flex-shrink: 0;
+      width: 26px; height: 26px;
+      border-radius: 50%;
+      background: rgba(0,50,25,.08);
+      color: var(--forest);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .check-card-text { font-size: .9rem; color: var(--ink); line-height: 1.55; padding-top: .15rem; }
+
+    .feature-list { display: flex; flex-direction: column; gap: .75rem; max-width: 700px; margin: 0 auto; }
+    .feature-item {
+      display: flex;
+      align-items: flex-start;
+      gap: .85rem;
+      padding: .95rem 1.1rem;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+    }
+    .feature-item-icon {
+      flex-shrink: 0;
+      width: 30px; height: 30px;
+      border-radius: 50%;
+      background: var(--parchment-dk);
+      color: var(--forest);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .feature-item-text { font-size: .92rem; color: var(--ink-light); line-height: 1.55; padding-top: .2rem; }
+
+    .compat-row {
+      display: flex;
+      justify-content: center;
+      gap: 1.25rem;
+      flex-wrap: wrap;
+    }
+    .compat-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: .55rem;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: .7rem 1.4rem;
+      font-size: .9rem;
+      font-weight: 600;
+      color: var(--ink);
+    }
+    .compat-pill svg { color: var(--forest); flex-shrink: 0; }
+
+    .note-box {
+      max-width: 760px;
+      margin: 0 auto;
+      display: flex;
+      align-items: flex-start;
+      gap: .85rem;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--amber);
+      border-radius: var(--radius);
+      padding: 1.15rem 1.4rem;
+    }
+    .note-box-icon { flex-shrink: 0; font-size: 1.1rem; line-height: 1.6; }
+    .note-box p { font-size: .88rem; color: var(--ink-light); line-height: 1.75; margin: 0; }
+    .note-box p strong { color: var(--ink); }
+
+    @media (max-width: 900px) {
+      .card-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 600px) {
+      .card-grid, .card-grid.cols-2 { grid-template-columns: 1fr; }
+    }
+
+    /* ══════════════════════════════════════
+       PURCHASE CTA
+    ══════════════════════════════════════ */
+    .purchase-section {
+      background: var(--forest-dark);
+      padding: 4.5rem 0;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      margin-top: 2rem;
+    }
+    .purchase-section::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 50% 100%, rgba(204,156,66,.14), transparent 60%);
+    }
+    .purchase-inner { position: relative; z-index: 1; }
+    .purchase-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      font-size: .72rem;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--amber-light);
+      margin-bottom: 1rem;
+    }
+    .purchase-inner h2 {
+      font-size: clamp(1.6rem, 3vw, 2.1rem);
+      color: var(--white);
+      margin-bottom: .85rem;
+    }
+    .purchase-inner p {
+      font-size: .95rem;
+      color: rgba(255,255,255,.7);
+      max-width: 480px;
+      margin: 0 auto 2rem;
+      line-height: 1.7;
+    }
+    .btn-purchase {
+      display: inline-flex;
+      align-items: center;
+      gap: .6rem;
+      background: var(--amber);
+      color: var(--forest-dark);
+      font-weight: 700;
+      font-size: 1rem;
+      padding: 1rem 2.5rem;
+      border-radius: var(--radius);
+      transition: background .2s, transform .2s;
+    }
+    .btn-purchase:hover { background: var(--amber-light); transform: translateY(-2px); }
+    .purchase-secure {
+      margin-top: 1.25rem;
+      font-size: .78rem;
+      color: rgba(255,255,255,.5);
+    }
+
+    /* ══════════════════════════════════════
+       FOOTER
+    ══════════════════════════════════════ */
+    .footer { background: var(--forest-dark); color: rgba(255,255,255,.7); padding: 4rem 0 2rem; }
+    .footer-top {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 3rem;
+      padding-bottom: 2.5rem;
+      border-bottom: 1px solid rgba(255,255,255,.08);
+    }
+    .footer-brand-name {
+      display: flex; align-items: center; gap: .6rem;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: .9rem;
+    }
+    .footer-brand-name span { color: var(--amber); }
+    .footer-brand-desc { font-size: .85rem; line-height: 1.6; max-width: 300px; }
+    .footer-col-title { font-size: .75rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: rgba(255,255,255,.4); margin-bottom: 1rem; }
+    .footer-links { display: flex; flex-direction: column; gap: .6rem; }
+    .footer-links a { font-size: .875rem; color: rgba(255,255,255,.6); transition: color .15s; }
+    .footer-links a:hover { color: var(--amber-light); }
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: .75rem;
+      padding-top: 2rem;
+      font-size: .8rem;
+      color: rgba(255,255,255,.4);
+    }
+
+    @media (max-width: 768px) {
+      .footer-top { grid-template-columns: 1fr; gap: 2.5rem; }
+    }
+    @media (max-width: 480px) {
+      .container { padding: 0 1.25rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ══ NAV ══ -->
+  <nav class="nav" id="nav">
+    <div class="container">
+      <div class="nav-inner">
+        <a href="index.html" class="nav-logo">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="28" height="28" class="nav-logo-svg" style="flex-shrink:0">
+            <rect x="4" y="4" width="92" height="92" rx="14" ry="14" fill="none" stroke="currentColor" stroke-width="4.5"/>
+            <text x="16" y="70" font-family="Palatino Linotype,Palatino,Book Antiqua,serif" font-size="62" font-weight="400" fill="currentColor">L</text>
+            <text x="33" y="74" font-family="Palatino Linotype,Palatino,Book Antiqua,serif" font-size="54" font-weight="400" fill="currentColor">C</text>
+            <line x1="26" y1="16" x2="74" y2="86" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+          </svg>
+          <div class="nav-logo-name">Laudos <span>&amp;</span> Contratos Imobiliários</div>
+        </a>
+        <button class="nav-toggle" id="navToggle" aria-label="Abrir menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+        <div class="nav-links" id="navLinks">
+          <a href="index.html#combos">Combos</a>
+          <a href="index.html#modelos">Modelos</a>
+          <a href="index.html#como-funciona">Como Funciona</a>
+          <a href="faq.html">FAQ</a>
+          <a href="index.html#combos" class="btn-nav">Comprar Agora</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ══ PAGE HERO ══ -->
+  <section class="page-hero">
+    <div class="container page-hero-inner">
+      <span class="page-hero-badge">Avaliação Imobiliária</span>
+      <h1 class="page-hero-title">Kit Profissional para Avaliação Imobiliária — Método Comparativo Direto <br>de Dados de Mercado <br>(Grau III de Fundamentação)</h1>
+      <p class="page-hero-desc">Kit profissional desenvolvido para elaboração de Laudos de Avaliação Mercadológica de Imóveis Urbanos pelo Método Comparativo Direto de Dados de Mercado, em conformidade com a ABNT NBR 14653-1 e NBR 14653-2, estruturado para avaliações enquadráveis no Grau III de Fundamentação.</p>
+      <a href="index.html" class="back-link">← Voltar para a página inicial</a>
+    </div>
+  </section>
+
+  <!-- ══ INTRO ══ -->
+  <section class="intro-section">
+    <div class="container intro-container">
+      <p>O <strong>Método Comparativo Direto de Dados de Mercado</strong> é o procedimento mais utilizado para determinação do valor de mercado de imóveis urbanos. No <strong>Grau III de Fundamentação</strong>, a avaliação é realizada por meio de tratamento inferencial utilizando regressão linear múltipla, permitindo analisar simultaneamente a influência das características dos imóveis comparáveis sobre o valor de mercado.</p>
+      <p>Este kit reúne todas as ferramentas necessárias para elaboração de laudos técnicos de Grau III, proporcionando maior padronização, organização documental, agilidade e segurança na execução das avaliações. Além dos modelos profissionais de laudo, acompanha planilha Excel totalmente automatizada para tratamento estatístico dos dados e manuais completos de utilização.</p>
+    </div>
+  </section>
+
+  <!-- ══ INDICADO PARA ══ -->
+  <section class="product-section">
+    <div class="container product-container">
+      <span class="product-section-eyebrow">Para quem é</span>
+      <h2 class="product-section-title">Indicado para</h2>
+      <div class="card-grid">
+        <div class="info-card">
+          <div class="info-card-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18"/><path d="M5 21V7l8-4v18"/><path d="M19 21V11l-6-4"/></svg></div>
+          <div class="info-card-text">Corretores de imóveis</div>
+        </div>
+        <div class="info-card">
+          <div class="info-card-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></div>
+          <div class="info-card-text">Avaliadores imobiliários</div>
+        </div>
+        <div class="info-card">
+          <div class="info-card-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4.5 8-11a8 8 0 1 0-16 0c0 6.5 8 11 8 11z"/><circle cx="12" cy="11" r="3"/></svg></div>
+          <div class="info-card-text">Peritos judiciais e extrajudiciais</div>
+        </div>
+        <div class="info-card">
+          <div class="info-card-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M6 21v-2a6 6 0 0 1 12 0v2"/></svg></div>
+          <div class="info-card-text">Assistentes técnicos</div>
+        </div>
+        <div class="info-card">
+          <div class="info-card-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></div>
+          <div class="info-card-text">Engenheiros</div>
+        </div>
+        <div class="info-card">
+          <div class="info-card-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 22h20"/><path d="M6 18V2l6 3 6-3v16"/><path d="M6 12h12"/></svg></div>
+          <div class="info-card-text">Arquitetos</div>
+        </div>
+      </div>
+      <div class="card-grid cols-2" style="margin-top:1rem;">
+        <div class="info-card" style="grid-column: 1 / -1;">
+          <div class="info-card-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg></div>
+          <div class="info-card-text">Empresas e profissionais especializados em avaliações imobiliárias</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ APLICAÇÕES ══ -->
+  <section class="product-section" style="background:var(--parchment-dk);">
+    <div class="container product-container">
+      <span class="product-section-eyebrow">Onde aplicar</span>
+      <h2 class="product-section-title">Aplicações</h2>
+      <p class="product-section-sub">O kit pode ser utilizado em avaliações destinadas a:</p>
+      <div class="card-grid">
+        <div class="check-card"><div class="check-card-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg></div><div class="check-card-text">Perícias judiciais</div></div>
+        <div class="check-card"><div class="check-card-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg></div><div class="check-card-text">Assistência técnica judicial</div></div>
+        <div class="check-card"><div class="check-card-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg></div><div class="check-card-text">Garantias bancárias e financeiras</div></div>
+        <div class="check-card"><div class="check-card-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg></div><div class="check-card-text">Compra e venda de imóveis</div></div>
+        <div class="check-card"><div class="check-card-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg></div><div class="check-card-text">Partilhas patrimoniais</div></div>
+        <div class="check-card"><div class="check-card-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg></div><div class="check-card-text">Inventários</div></div>
+        <div class="check-card"><div class="check-card-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg></div><div class="check-card-text">Divórcios</div></div>
+        <div class="check-card"><div class="check-card-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg></div><div class="check-card-text">Dissolução de sociedades</div></div>
+        <div class="check-card"><div class="check-card-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg></div><div class="check-card-text">Atualização patrimonial</div></div>
+        <div class="check-card"><div class="check-card-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg></div><div class="check-card-text">Planejamento sucessório</div></div>
+        <div class="check-card"><div class="check-card-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg></div><div class="check-card-text">Estudos de viabilidade imobiliária</div></div>
+        <div class="check-card"><div class="check-card-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg></div><div class="check-card-text">Apoio à tomada de decisões empresariais</div></div>
+        <div class="check-card" style="grid-column: 1 / -1;"><div class="check-card-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg></div><div class="check-card-text">Outras avaliações que exijam elevado rigor técnico</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ O QUE ACOMPANHA ══ -->
+  <section class="product-section">
+    <div class="container product-container">
+      <span class="product-section-eyebrow">Conteúdo do produto</span>
+      <h2 class="product-section-title">O que acompanha o kit</h2>
+      <div class="card-grid">
+        <div class="check-card"><div class="check-card-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg></div><div class="check-card-text">Modelo de Laudo Comentado (.docx)</div></div>
+        <div class="check-card"><div class="check-card-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg></div><div class="check-card-text">Modelo de Laudo Limpo (.docx)</div></div>
+        <div class="check-card"><div class="check-card-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg></div><div class="check-card-text">Planilha Excel totalmente automatizada para tratamento inferencial dos dados</div></div>
+        <div class="check-card"><div class="check-card-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg></div><div class="check-card-text">Regressão linear múltipla automática</div></div>
+        <div class="check-card"><div class="check-card-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg></div><div class="check-card-text">Cálculo automático dos coeficientes da regressão</div></div>
+        <div class="check-card"><div class="check-card-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg></div><div class="check-card-text">Cálculo automático do R² e R² ajustado</div></div>
+        <div class="check-card"><div class="check-card-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg></div><div class="check-card-text">Cálculo automático dos testes estatísticos do modelo</div></div>
+        <div class="check-card"><div class="check-card-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg></div><div class="check-card-text">Cálculo automático dos resíduos</div></div>
+        <div class="check-card"><div class="check-card-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg></div><div class="check-card-text">Cálculo automático do intervalo de confiança (80%)</div></div>
+        <div class="check-card"><div class="check-card-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg></div><div class="check-card-text">Determinação automática do valor de mercado</div></div>
+        <div class="check-card"><div class="check-card-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg></div><div class="check-card-text">Sanitização automática da amostra (MA ± 1,5 DP)</div></div>
+        <div class="check-card"><div class="check-card-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg></div><div class="check-card-text">Gráfico de dispersão automático</div></div>
+        <div class="check-card"><div class="check-card-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg></div><div class="check-card-text">Histograma automático</div></div>
+        <div class="check-card"><div class="check-card-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg></div><div class="check-card-text">Manual Geral de Utilização (.pdf)</div></div>
+        <div class="check-card"><div class="check-card-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg></div><div class="check-card-text">Manual de Utilização da Planilha Excel (.pdf)</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ PRINCIPAIS RECURSOS ══ -->
+  <section class="product-section" style="background:var(--parchment-dk);">
+    <div class="container product-container">
+      <span class="product-section-eyebrow">Recursos</span>
+      <h2 class="product-section-title">Principais Recursos</h2>
+      <div class="feature-list">
+        <div class="feature-item"><div class="feature-item-icon"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg></div><div class="feature-item-text">Estrutura completa do laudo pronta para preenchimento</div></div>
+        <div class="feature-item"><div class="feature-item-icon"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div><div class="feature-item-text">Comentários técnicos orientativos na versão comentada</div></div>
+        <div class="feature-item"><div class="feature-item-icon"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg></div><div class="feature-item-text">Campos organizados conforme as etapas da avaliação</div></div>
+        <div class="feature-item"><div class="feature-item-icon"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg></div><div class="feature-item-text">Quadro amostral para até 25 elementos comparativos</div></div>
+        <div class="feature-item"><div class="feature-item-icon"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><rect x="7" y="13" width="3" height="5"/><rect x="12" y="9" width="3" height="9"/><rect x="17" y="6" width="3" height="12"/></svg></div><div class="feature-item-text">Tratamento inferencial por regressão linear múltipla</div></div>
+        <div class="feature-item"><div class="feature-item-icon"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg></div><div class="feature-item-text">Tratamento estatístico automatizado</div></div>
+        <div class="feature-item"><div class="feature-item-icon"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></div><div class="feature-item-text">Análise automática da qualidade do modelo</div></div>
+        <div class="feature-item"><div class="feature-item-icon"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><path d="m7 14 3-3 3 3 5-5"/></svg></div><div class="feature-item-text">Análise automática dos resíduos</div></div>
+        <div class="feature-item"><div class="feature-item-icon"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4.5 8-11a8 8 0 1 0-16 0c0 6.5 8 11 8 11z"/><circle cx="12" cy="11" r="3"/></svg></div><div class="feature-item-text">Intervalo de confiança de 80%</div></div>
+        <div class="feature-item"><div class="feature-item-icon"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div><div class="feature-item-text">Determinação automática do valor de mercado</div></div>
+        <div class="feature-item"><div class="feature-item-icon"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 11 3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></div><div class="feature-item-text">Checklist normativo para verificação dos requisitos do Grau III</div></div>
+        <div class="feature-item"><div class="feature-item-icon"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.1-3.1a2 2 0 0 0-2.8 0L9 18"/></svg></div><div class="feature-item-text">Relatório fotográfico</div></div>
+        <div class="feature-item"><div class="feature-item-icon"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="M7 10l5 5 5-5"/><path d="M12 15V3"/></svg></div><div class="feature-item-text">Controle documental e anexos</div></div>
+        <div class="feature-item"><div class="feature-item-icon"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></div><div class="feature-item-text">Glossário técnico e referências normativas</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ COMPATIBILIDADE ══ -->
+  <section class="product-section">
+    <div class="container product-container">
+      <span class="product-section-eyebrow">Formato dos arquivos</span>
+      <h2 class="product-section-title">Compatibilidade</h2>
+      <div class="compat-row">
+        <span class="compat-pill">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg>
+          Microsoft Word (.docx)
+        </span>
+        <span class="compat-pill">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg>
+          Microsoft Excel (.xlsx)
+        </span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ OBSERVAÇÃO ══ -->
+  <section class="product-section" style="padding-top:1rem;">
+    <div class="container">
+      <div class="note-box">
+        <span class="note-box-icon">⚠️</span>
+        <p><strong>Observação:</strong> Este material constitui uma ferramenta de apoio técnico destinada a profissionais da área imobiliária. A responsabilidade pela vistoria, pesquisa de mercado, seleção das amostras, definição das variáveis do modelo, análise crítica dos resultados, enquadramento metodológico e emissão do laudo permanece integralmente com o profissional responsável pela avaliação.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ PURCHASE CTA ══ -->
+  <section class="purchase-section">
+    <div class="container purchase-inner">
+      <span class="purchase-eyebrow">Adquira agora</span>
+      <h2>Garanta seu modelo profissional</h2>
+      <p>Acesso digital imediato após a confirmação do pagamento, com todos os arquivos prontos para uso.</p>
+      <a href="https://pay.cakto.com.br/36ubojn_914063" class="btn-purchase" target="_blank" rel="noopener">
+        Comprar Agora
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+      </a>
+      <p class="purchase-secure">🔒 Pagamento 100% seguro · Processado via Cakto</p>
+    </div>
+  </section>
+
+  <!-- ══ FOOTER ══ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-top">
+        <div>
+          <div class="footer-brand-name">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="28" height="28" style="flex-shrink:0;opacity:.8">
+              <rect x="4" y="4" width="92" height="92" rx="14" ry="14" fill="none" stroke="currentColor" stroke-width="4"/>
+              <text x="16" y="70" font-family="Palatino Linotype,Palatino,Book Antiqua,serif" font-size="62" font-weight="400" fill="currentColor">L</text>
+              <text x="33" y="74" font-family="Palatino Linotype,Palatino,Book Antiqua,serif" font-size="54" font-weight="400" fill="currentColor">C</text>
+              <line x1="26" y1="16" x2="74" y2="86" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+            </svg>
+            Laudos <span>&amp;</span> Contratos Imobiliários
+          </div>
+          <p class="footer-brand-desc">Modelos profissionais de laudos, vistorias e contratos imobiliários. Normatizados e prontos para uso.</p>
+        </div>
+        <div>
+          <div class="footer-col-title">Navegação</div>
+          <nav class="footer-links">
+            <a href="index.html#combos">Combos</a>
+            <a href="index.html#modelos">Modelos Avulsos</a>
+            <a href="index.html#como-funciona">Como Funciona</a>
+            <a href="faq.html">Perguntas Frequentes</a>
+          </nav>
+        </div>
+        <div>
+          <div class="footer-col-title">Legal</div>
+          <nav class="footer-links">
+            <a href="privacidade.html">Política de Privacidade</a>
+            <a href="termos.html">Termos de Serviço</a>
+            <a href="#" style="color:rgba(255,255,255,.4)">Processamento seguro via Cakto</a>
+          </nav>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 · Laudos &amp; Contratos Imobiliários. Todos os direitos reservados.</span>
+        <span>🔒 Pagamento 100% seguro</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // ── NAV SCROLL ──
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 60);
+    }, { passive: true });
+
+    // ── MENU MOBILE (hamburguer) ──
+    const navToggle = document.getElementById('navToggle');
+    const navLinks = document.getElementById('navLinks');
+    navToggle.addEventListener('click', () => {
+      navToggle.classList.toggle('open');
+      navLinks.classList.toggle('open');
+    });
+    navLinks.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => {
+        navToggle.classList.remove('open');
+        navLinks.classList.remove('open');
+      });
+    });
+  </script>
+
+</body>
+</html>
